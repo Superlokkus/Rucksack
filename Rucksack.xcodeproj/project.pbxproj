@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2832D2E919DC222B003C6B44 /* Rucksack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Rucksack; sourceTree = BUILT_PRODUCTS_DIR; };
 		2832D2EC19DC222B003C6B44 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2832D2F419DC2723003C6B44 /* rucksack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rucksack.h; path = ../rucksack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +58,7 @@
 		2832D2EB19DC222B003C6B44 /* Rucksack */ = {
 			isa = PBXGroup;
 			children = (
+				2832D2F419DC2723003C6B44 /* rucksack.h */,
 				2832D2EC19DC222B003C6B44 /* main.cpp */,
 			);
 			path = Rucksack;
@@ -202,6 +204,8 @@
 		2832D2F119DC222B003C6B44 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				GCC_C_LANGUAGE_STANDARD = c11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -209,6 +213,8 @@
 		2832D2F219DC222B003C6B44 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				GCC_C_LANGUAGE_STANDARD = c11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
