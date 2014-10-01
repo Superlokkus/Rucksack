@@ -10,6 +10,7 @@
 #define Rucksack_rucksack_h
 
 #include <string>
+#include <vector>
 
 namespace rucksack
 {
@@ -18,9 +19,25 @@ namespace rucksack
         unsigned size;
         std::string name;
         
-        Item (const unsigned s, const std::string &n) : size(s),name(n) {}
+        Item (unsigned s, const std::string &n) : size(s),name(n) {}
         Item() : Item(0,"Nothing") {}
         
+        
+    };
+    
+    class Rucksack
+    {
+    public:
+        unsigned size() const {return psize;}
+        void setsize(const unsigned s) {psize = s;}
+        
+        Rucksack(unsigned s, std::vector<Item> && i)
+        : psize(s), items(std::move(i)) {}
+        Rucksack(unsigned s) : psize(s) {}
+        
+    private:
+        unsigned psize;
+        std::vector<Item> items;
         
     };
 }
