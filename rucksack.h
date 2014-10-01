@@ -15,11 +15,11 @@ namespace rucksack
 {
     struct Item
     {
-        const unsigned size;
-        const std::string name;
+        unsigned size;
+        std::string name;
         
-        constexpr Item (const unsigned s, const std::string &n) : size(s),name(n) {}
-        constexpr Item : Item(0,"Nothing") {}
+        Item (const unsigned s, const std::string &n) : size(s),name(n) {}
+        Item() : Item(0,"Nothing") {}
         
         
     };
