@@ -7,12 +7,16 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "rucksack.h"
 
 
 int main(int argc, const char * argv[]) {
-
     
+    std::vector<rucksack::Item> items = {
+        {6,std::string("Kugel")},{2,"Stift"},{1,"Klammer"},{"7","Laptop"}
+    };
+    rucksack::Rucksack R(10);
     
     return 0;
 }

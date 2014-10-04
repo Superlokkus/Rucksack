@@ -11,6 +11,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 namespace rucksack
 {
@@ -19,21 +20,33 @@ namespace rucksack
         unsigned size;
         std::string name;
         
-        Item (unsigned s, const std::string &n) : size(s),name(n) {}
-        Item() : Item(0,"Nothing") {}
-        
-        
+        Item (const unsigned s, const std::string &n) : size(s),name(n) {}
+        Item (const unsigned s, const char *n) : size(s), name(n) {}
     };
     
     class Rucksack
     {
     public:
-        unsigned size() const {return psize;}
-        void setsize(const unsigned s) {psize = s;}
+        unsigned size() const noexcept {return psize;}
+        void setsize(const unsigned s) noexcept {psize = s;}
         
-        Rucksack(unsigned s, std::vector<Item> && i)
+        void addItem (const Item &i) {items.push_back(i);}
+        void addItem (Item &&i) {items.push_back(i);}
+        
+        void showAssigendItems (void) const
+        {
+            //std::ostream s;
+            std::cout << "Name Size" << std::endl;
+            for (const auto &i : items)
+            {
+                std::cout << i.name << i.size << std::endl;
+            }
+        }
+        
+        
+        Rucksack(const unsigned s, std::vector<Item> && i)
         : psize(s), items(std::move(i)) {}
-        Rucksack(unsigned s) : psize(s) {}
+        Rucksack(const unsigned s) : psize(s) {}
         
     private:
         unsigned psize;
