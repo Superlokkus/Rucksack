@@ -21,7 +21,6 @@ namespace rucksack
         std::string name;
         
         Item (const unsigned s, const std::string &n) : size(s),name(n) {}
-        Item (const unsigned s, const char *n) : size(s), name(n) {}
     };
     
     class Rucksack
@@ -43,15 +42,32 @@ namespace rucksack
             }
         }
         
+        void optimize()
+        {
+            std::vector<std::vector<std::pair<size_type, Item*>>> table;
+            std::vector<std::pair<size_type, Item*>> seed = { std::make_pair(0, nullptr) };
+            table.push_back(seed);
+            for (size_type i = 0; i <= psize; i++)
+            {
+            }
+            for (auto k = 0; k != items.size(); k++) {
+                for (decltype(Rucksack::size()) s = 1; s <= this->size(); s++) {
+                    if (s < items[k].size) {
+                        <#statements#>
+                    }
+                }
+            }
+        }
         
         Rucksack(const unsigned s, std::vector<Item> && i)
-        : psize(s), items(std::move(i)) {}
+        : psize(s), items(std::move(i)) {optimize();}
         Rucksack(const unsigned s) : psize(s) {}
         
     private:
-        unsigned psize;
-        std::vector<Item> items;
+        using size_type = unsigned;
         
+        size_type psize;
+        std::vector<Item> items;
     };
 }
 
