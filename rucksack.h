@@ -44,18 +44,40 @@ namespace rucksack
         
         void optimize()
         {
-            std::vector<std::vector<std::pair<size_type, Item*>>> table;
-            std::vector<std::pair<size_type, Item*>> seed = { std::make_pair(0, nullptr) };
-            table.push_back(seed);
-            for (size_type i = 0; i <= psize; i++)
-            {
-            }
-            for (auto k = 0; k != items.size(); k++) {
-                for (decltype(Rucksack::size()) s = 1; s <= this->size(); s++) {
-                    if (s < items[k].size) {
-                        <#statements#>
+            std::vector<std::vector<std::pair<size_type, std::vector<Item*>>>> matrix; //(k,s) matrix
+            
+            std::pair<size_type, std::vector<Item*>> empty = std::make_pair(0,std::vector<Item*>({nullptr}));
+            
+            for (auto k = 0; k <= items.size(); k++) {
+                std::vector<std::pair<size_type, std::vector<Item*>>> row;
+                if (k == 0)
+                {
+                    row.emplace_back(empty);
+                }
+                for (decltype(Rucksack::size()) s = 0; s <= this->size(); s++) {
+                    if (s < matrix[k-1].at(s).first) {
+                        row.emplace_back((matrix[k-1]).at(s));
+                    }
+                    else
+                    {
+                        std::pair<size_type, std::vector<Item*>> cell;
+                        if (matrix[k-1].at(s).first < matrix[k-1].at(s - items[k].size ).first + items[k].size)
+                        {
+                            //Pack the k-th item
+                            cell.second = matrix[k-1].at(s - items[k].size ).second;
+                            cell.second.emplace_back(&items[k]);
+                            cell.first = matrix[k-1].at(s - items[k].size ).first + items[k].size;
+                        }
+                        else
+                        {
+                            cell.second = matrix[k-1].at(s).second;
+                            cell.first = matrix[k-1].at(s).first;
+                        }
+                        row.emplace_back(cell);
+                        
                     }
                 }
+                matrix.emplace_back(std::move(row));
             }
         }
         
