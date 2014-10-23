@@ -50,12 +50,13 @@ namespace rucksack
             
             for (auto k = 0; k <= items.size(); k++) {
                 std::vector<std::pair<size_type, std::vector<Item*>>> row;
-                if (k == 0)
-                {
-                    row.emplace_back(empty);
-                }
                 for (decltype(Rucksack::size()) s = 0; s <= this->size(); s++) {
-                    if (s < matrix[k-1].at(s).first) {
+                    if (k == 0)
+                    {
+                        row.emplace_back(empty);
+                        continue;
+                    }
+                    else if (s < matrix[k-1].at(s).first) {
                         row.emplace_back((matrix[k-1]).at(s));
                     }
                     else

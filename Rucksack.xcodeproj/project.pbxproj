@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2806863E19F91E0900C8FA07 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 2806863D19F91E0900C8FA07 /* readme.md */; };
 		2832D2ED19DC222B003C6B44 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2832D2EC19DC222B003C6B44 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2806863D19F91E0900C8FA07 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		2832D2E919DC222B003C6B44 /* Rucksack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Rucksack; sourceTree = BUILT_PRODUCTS_DIR; };
 		2832D2EC19DC222B003C6B44 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2832D2F419DC2723003C6B44 /* rucksack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rucksack.h; path = ../rucksack.h; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 		2832D2E019DC222B003C6B44 = {
 			isa = PBXGroup;
 			children = (
+				2806863D19F91E0900C8FA07 /* readme.md */,
 				2832D2EB19DC222B003C6B44 /* Rucksack */,
 				2832D2EA19DC222B003C6B44 /* Products */,
 			);
@@ -120,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2806863E19F91E0900C8FA07 /* readme.md in Sources */,
 				2832D2ED19DC222B003C6B44 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +242,7 @@
 				2832D2F219DC222B003C6B44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
