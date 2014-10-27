@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 namespace rucksack
 {
@@ -49,13 +50,14 @@ namespace rucksack
             std::vector<std::vector<cell>> matrix; //(k,s) matrix
             cell empty = std::make_pair(0,std::vector<Item*>({nullptr}));
             
-            for (auto k = 0; k <= items.size(); k++) {
+            for (auto k = 0; k <= items.size(); k++)
+            {
                 std::vector<cell> row;
-                for (decltype(Rucksack::size()) s = 0; s <= this->size(); s++) {
+                for (decltype(Rucksack::size()) s = 0; s <= this->size(); s++)
+                {
                     if (k == 0)
                     {
                         row.emplace_back(empty);
-                        continue;
                     }
                     else if (s < matrix[k-1].at(s).first) {
                         row.emplace_back((matrix[k-1]).at(s));
@@ -63,12 +65,12 @@ namespace rucksack
                     else
                     {
                         cell cell;
-                        if (matrix[k-1].at(s).first < matrix[k-1].at(s - items[k].size ).first + items[k].size)
+                        if (matrix[k-1].at(s).first < matrix[k-1].at((s < items[k].size ) ? 0 : s - items[k].size ).first + items[k].size)
                         {
                             //Pack the k-th item
-                            cell.second = matrix[k-1].at(s - items[k].size ).second;
+                            cell.second = matrix[k-1].at((s < items[k].size ) ? 0 : s - items[k].size).second;
                             cell.second.emplace_back(&items[k]);
-                            cell.first = matrix[k-1].at(s - items[k].size ).first + items[k].size;
+                            cell.first = matrix[k-1].at((s < items[k].size ) ? 0 : s - items[k].size).first + items[k].size;
                         }
                         else
                         {
@@ -78,9 +80,20 @@ namespace rucksack
                         row.emplace_back(cell);
                         
                     }
+                    
                 }
                 matrix.emplace_back(std::move(row));
             }
+#ifndef _NDEBUG
+            for (auto k : matrix)
+            {
+                for (auto s : k)
+                {
+                    std::cout << s.first << " ";
+                }
+                std::cout << std::endl;
+            }
+#endif
         }
         
         Rucksack(const unsigned s, std::vector<Item> && i)
