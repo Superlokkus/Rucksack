@@ -44,12 +44,13 @@ namespace rucksack
         
         void optimize()
         {
-            std::vector<std::vector<std::pair<size_type, std::vector<Item*>>>> matrix; //(k,s) matrix
+            using cell = std::pair<size_type, std::vector<Item*>>;
             
-            std::pair<size_type, std::vector<Item*>> empty = std::make_pair(0,std::vector<Item*>({nullptr}));
+            std::vector<std::vector<cell>> matrix; //(k,s) matrix
+            cell empty = std::make_pair(0,std::vector<Item*>({nullptr}));
             
             for (auto k = 0; k <= items.size(); k++) {
-                std::vector<std::pair<size_type, std::vector<Item*>>> row;
+                std::vector<cell> row;
                 for (decltype(Rucksack::size()) s = 0; s <= this->size(); s++) {
                     if (k == 0)
                     {
@@ -61,7 +62,7 @@ namespace rucksack
                     }
                     else
                     {
-                        std::pair<size_type, std::vector<Item*>> cell;
+                        cell cell;
                         if (matrix[k-1].at(s).first < matrix[k-1].at(s - items[k].size ).first + items[k].size)
                         {
                             //Pack the k-th item
