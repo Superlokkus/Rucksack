@@ -59,7 +59,7 @@ namespace rucksack
                     {
                         row.emplace_back(empty);
                     }
-                    else if (s < matrix[k-1].at(s).first) {
+                    else if (s < items[k-1].size) {
                         row.emplace_back((matrix[k-1]).at(s));
                     }
                     else
