@@ -65,12 +65,12 @@ namespace rucksack
                     else
                     {
                         cell cell;
-                        if (matrix[k-1].at(s).first < matrix[k-1].at((s < items[k].size ) ? 0 : s - items[k].size ).first + items[k].size)
+                        if (matrix[k-1].at(s).first < matrix[k-1].at((s < items[k-1].size ) ? 0 : s - items[k-1].size ).first + items[k-1].size)
                         {
                             //Pack the k-th item
-                            cell.second = matrix[k-1].at((s < items[k].size ) ? 0 : s - items[k].size).second;
-                            cell.second.emplace_back(&items[k]);
-                            cell.first = matrix[k-1].at((s < items[k].size ) ? 0 : s - items[k].size).first + items[k].size;
+                            cell.second = matrix[k-1].at((s < items[k-1].size ) ? 0 : s - items[k-1].size).second;
+                            cell.second.emplace_back(&items[k-1]);
+                            cell.first = matrix[k-1].at((s < items[k-1].size ) ? 0 : s - items[k-1].size).first + items[k-1].size;
                         }
                         else
                         {

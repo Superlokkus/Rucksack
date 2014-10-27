@@ -14,7 +14,8 @@
 int main(int argc, const char * argv[]) {
     
     std::vector<rucksack::Item> items = {
-        {6,std::string("Kugel")},{2,std::string("Stift")},{1,std::string("Klammer")},{7,std::string("Laptop")}
+        {1,std::string("Klammer")},{2,std::string("Stift")},
+        {6,std::string("Kugel")},{7,std::string("Laptop")}
     };
 
     rucksack::Rucksack R(10,std::move(items));
